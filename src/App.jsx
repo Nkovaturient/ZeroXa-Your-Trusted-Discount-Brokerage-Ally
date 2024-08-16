@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import Signup from './Landing_page/Signup/Signup'
 import Navbar from './Landing_page/Navbar.jsx'
 import Footer from './Landing_page/Footer.jsx'
+import PageNotFound from './Landing_page/PageNotFound.jsx'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Route path='/pricing' element={<PricingPage />} />
       <Route path='/product' element={<ProductPage />} />
       <Route path='/support' element={<SupportPage />} />
+      <Route path='*' element={<PageNotFound />} />
       </Routes>
 
       <Footer />

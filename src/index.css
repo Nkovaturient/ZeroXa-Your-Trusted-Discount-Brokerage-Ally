@@ -10,6 +10,37 @@ footer, a{
 
 }
 
+#supportHero{
+  background-color: #387ED1;
+}
+
+#supportHero input{
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  padding: 20px 50px;
+  width: 90%;
+}
+
+#supportWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 190px;
+  color: #fff;
+}
+#supportWrapper a, #supportLinks a{
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration-line: underline;
+  margin-left: 1.34rem;
+}
+#supportLinks li{
+  list-style-type: decimal;
+  margin-top: 0.89rem;
+}
+
+
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

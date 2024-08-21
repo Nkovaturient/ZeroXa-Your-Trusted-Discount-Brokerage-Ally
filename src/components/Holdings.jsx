@@ -7,7 +7,7 @@ const Holdings = () => {
 
 
   useEffect(()=>{
-   axios.get(`${url}/holdings`).then((res)=>{
+   axios.get(`${url}/api/holdings`).then((res)=>{
     const result=res.data;
     setHoldings(result.data);
    });

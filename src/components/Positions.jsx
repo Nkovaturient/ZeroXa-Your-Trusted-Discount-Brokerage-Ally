@@ -7,7 +7,7 @@ const Positions = () => {
 
 
   useEffect(()=>{
-   axios.get(`${url}/positions`).then((res)=>{
+   axios.get(`${url}/api/positions`).then((res)=>{
     const result=res.data;
     // console.log(result.data.length)
     setPositions(result.data);

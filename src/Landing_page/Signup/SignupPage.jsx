@@ -29,7 +29,8 @@ const SignupPage = () => {
       verifyCookie();
     }, [cookies, navigate, removeCookie]);
     const Logout = () => {
-      removeCookie("token");
+      localStorage.removeItem("token");
+      setToken("");
       navigate("/");
     };
   return (

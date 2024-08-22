@@ -12,6 +12,7 @@ import PageNotFound from './Landing_page/PageNotFound.jsx'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './Landing_page/Signup/Login.jsx'
+import Dashboard from './Landing_page/Dashboard/Dashboard.jsx'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
       <Route path='/' element={<HomePage/>} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/about' element={<AboutPage />} />
       <Route path='/pricing' element={<PricingPage />} />
       <Route path='/product' element={<ProductPage />} />

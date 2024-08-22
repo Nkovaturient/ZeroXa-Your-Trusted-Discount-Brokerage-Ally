@@ -35,6 +35,7 @@ const Signup = () => {
       const { status, message, token, userData } = data;
       if (status) {
         localStorage.setItem("token", token)
+        setToken(token);
         toast.success(message, {
           position: "top-left",
         });
@@ -42,6 +43,8 @@ const Signup = () => {
       } else {
         toast.error(message, {
           position: "top-left",
+          autoClose: 5000,
+          theme: "dark",
         });
       }
     } catch (error) {

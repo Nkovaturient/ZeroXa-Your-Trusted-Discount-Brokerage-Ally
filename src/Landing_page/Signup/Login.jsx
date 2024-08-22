@@ -34,14 +34,16 @@ const Login = () => {
           },
           { withCredentials: true }
         );
-        console.log(data);
+        // console.log(data);
         const { status, message, token, userData } = data;
         if (status) {
           
         localStorage.setItem("token", token)
-        setUsername(userData.username)
+        setToken(token);
         toast.success(message, {
           position: "top-left",
+          autoClose: 5000,
+          theme: "dark",
         });
         navigate("/");
         } else {
@@ -58,10 +60,6 @@ const Login = () => {
         password: "",
       });
     };
-
-    useEffect(()=>{
-      console.log('login--', username);
-    },[])
 
   
     return (

@@ -17,9 +17,6 @@ const Navbar = () => {
     navigate('/');
   }
 
-  useEffect(()=>{
-    console.log(username);
-  },[])
  
   return (
     
@@ -73,12 +70,8 @@ const Navbar = () => {
                   Support
                 </Link>
               </li>
-              { token && <li className="nav-item mx-4">
-                <Link className="nav-link" to={"/dashboard"} >
-                 <span>{username}</span>
-                </Link>
-              </li>}
-              {/* <li className="nav-item dropdown">
+            
+              { token && <li className="nav-item dropdown" >
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -86,29 +79,30 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Dashboard
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
+                    <Link className="dropdown-item" to={'/dashboard'}>
+                      Admin
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
+                    <Link className="dropdown-item" to={'/dashboard'}>
+                      Track
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                      WatchList
                     </a>
                   </li>
                 </ul>
-              </li> */}
+              </li>
+}
               
             </ul>
             {/* <form className="d-flex" role="search">

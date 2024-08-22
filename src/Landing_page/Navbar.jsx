@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { storeContext } from "../Context/ContextAPI.jsx";
 
 const Navbar = () => {
+  
+  const { username, token, setToken}=useContext(storeContext);
+  const navigate=useNavigate();
+
+  const logout=async()=>{
+    localStorage.removeItem('token');
+    setToken(''); 
+    toast.success('Logged out successfully!');
+    navigate('/');
+  }
+
+  useEffect(()=>{
+    console.log(username);
+  },[])
+ 
   return (
     
       <nav className="navbar navbar-expand-lg  border-bottom" style={{backgroundColor: '#fff'}}>
@@ -9,6 +28,7 @@ const Navbar = () => {
           <Link className="navbar-brand ms-auto" to={'/'}>
             <img src="media/images/logo.svg" className="offset-4"  alt="ZeroXa" style={{width: '30%'}} />
           </Link>
+          
           <button
             className="navbar-toggler"
             type="button"
@@ -23,9 +43,15 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul style={{fontWeight: '600'}} className="navbar-nav me-auto ms-auto mb-2 mx-4 mb-lg-0">
               <li className="nav-item mx-4">
-                <Link className="nav-link" to={"/signup"}>
-                  Signup
-                </Link>
+             
+                { token
+                ? <button className="nav-link" onClick={logout}>
+                Logout
+              </button>
+              :   <Link className="nav-link" to={"/signup"}>
+              Signup
+            </Link>
+            }
               </li>
               <li className="nav-item mx-4">
                 <Link className="nav-link" to={"/about"}>
@@ -47,6 +73,11 @@ const Navbar = () => {
                   Support
                 </Link>
               </li>
+              { token && <li className="nav-item mx-4">
+                <Link className="nav-link" to={"/dashboard"} >
+                 <span>{username}</span>
+                </Link>
+              </li>}
               {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"

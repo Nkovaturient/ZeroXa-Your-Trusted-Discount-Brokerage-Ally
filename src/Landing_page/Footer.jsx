@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-    <footer className="p-5">
+    <footer className="p-5 footer">
       <div className="row p-5 border-top">
         <div className="col">
           <img
@@ -15,7 +15,7 @@ const Footer = () => {
           <p className="text-muted py-2">
             © 2010 - 2024, Zerodha Broking Ltd. <br /> All rights reserved.
           </p>
-          <div>
+          <div className="social-links">
             <p className="fs-4 my-4 "><i className="fa-brands fa-instagram"></i> &nbsp; <i className="fa-brands fa-youtube"></i> &nbsp; <i className="fa-brands fa-x-twitter"></i>&nbsp; 
             &nbsp;<i className="fa-brands fa-linkedin-in"></i>&nbsp; <br /> <i className="fa-brands fa-facebook"></i>&nbsp;&nbsp; <i className="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;  <i className="fa-brands fa-telegram"></i></p>
           </div>

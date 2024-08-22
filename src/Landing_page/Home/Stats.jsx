@@ -19,7 +19,7 @@ const Stats = () => {
         <img src="media/images/ecosystem.png" style={{width: '90%'}} alt="Stats Image" />
         <div className='mt-5 text-center '>
           <a href="#" className='mx-5' style={{textDecoration: 'none'}}>Explore our products <i className="fa-solid fa-arrow-right"></i></a>
-          <a href="#" style={{textDecoration: 'none'}}>Try Kite Demo <i class="fa-solid fa-arrow-right"></i> </a>
+          <a href="#" style={{textDecoration: 'none'}}>Try Kite Demo <i className="fa-solid fa-arrow-right"></i> </a>
         </div>
       </div>
       </div>

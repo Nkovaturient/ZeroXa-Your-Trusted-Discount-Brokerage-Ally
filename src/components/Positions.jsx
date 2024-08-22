@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Positions = () => {
+const Positions = ({url}) => {
   const[positions, setPositions]=useState([]);
-  const url=`http://localhost:7000`
 
 
   useEffect(()=>{

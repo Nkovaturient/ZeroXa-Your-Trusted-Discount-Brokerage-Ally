@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import VerticalGraph from "./VerticalGraph";
 
-const Holdings = () => {
+const Holdings = ({url}) => {
   const[holdings, setHoldings]=useState([]);
-  const url=`http://localhost:7000`
 
 
   useEffect(()=>{

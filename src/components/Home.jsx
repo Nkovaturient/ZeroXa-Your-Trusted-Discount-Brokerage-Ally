@@ -2,11 +2,12 @@ import React from 'react'
 import TopBar from './TopBar'
 import Dashboard from './Dashboard'
 
-const Home = () => {
+const Home = ({url}) => {
+
   return (
     <>
     <TopBar/>
-    <Dashboard/>
+    <Dashboard url={url}/>
     </>
   )
 }

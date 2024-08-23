@@ -7,8 +7,9 @@ import { storeContext } from "../Context/ContextAPI.jsx";
 
 const Navbar = () => {
   
-  const { username, token, setToken}=useContext(storeContext);
+  const { userData, token, setToken}=useContext(storeContext);
   const navigate=useNavigate();
+  const{email, accessToken, providerId, photoURL, displayName, metadata}=userData;
 
   const logout=async()=>{
     localStorage.removeItem('token');
@@ -79,17 +80,17 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dashboard
+                   <span>{providerId}</span>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to={'/dashboard'}>
-                      Admin
+                      {email}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to={'/dashboard'}>
-                      Track
+                    Dashboard
                     </Link>
                   </li>
                   <li>

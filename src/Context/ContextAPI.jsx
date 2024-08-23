@@ -11,6 +11,7 @@ const storeContextProvider=(props)=>{
     const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const[token, setToken]=useState("");
+  const [userData, setUserData] = useState({});
 
 //   useEffect(() => {
 //     const verifyCookie = async () => {
@@ -47,7 +48,8 @@ const storeContextProvider=(props)=>{
 
 
     const contextValue={
-        
+        userData,
+        setUserData,
         setUsername,
         username,
         url,

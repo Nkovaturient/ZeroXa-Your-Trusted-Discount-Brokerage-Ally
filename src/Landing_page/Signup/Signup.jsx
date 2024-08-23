@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { storeContext } from "../../Context/ContextAPI";
 
 const Signup = () => {
-  const {url, setToken, setUsername}=useContext(storeContext);
+  const {url, setToken}=useContext(storeContext);
 
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -38,6 +38,7 @@ const Signup = () => {
         setToken(token);
         toast.success(message, {
           position: "top-left",
+          theme: "colored"
         });
         navigate("/");
       } else {
@@ -75,7 +76,7 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label htmlFor="email">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
@@ -97,6 +98,10 @@ const Signup = () => {
         <button type="submit">Submit</button>
         <span>
           Already have an account? <Link to={"/login"}>Login</Link>
+        </span>
+        <hr />
+        <span>
+        Register securely with <Link to={"/firebasignup"}>Firebase?</Link>
         </span>
       </form>
     </div>

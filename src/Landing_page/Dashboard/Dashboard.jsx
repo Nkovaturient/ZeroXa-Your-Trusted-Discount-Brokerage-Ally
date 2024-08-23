@@ -6,17 +6,31 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useEffect } from "react";
+import {signOut, onAuthStateChanged} from 'firebase/auth'
+import { auth } from "../../firebase";
 
 const Dashboard = () => {
   const { url, token, setToken, userData } = useContext(storeContext);
   const navigate = useNavigate();
-  const { email, accessToken, providerId, photoURL, displayName, metadata } =
-    userData;
+  const { email, providerId, photoURL, displayName, metadata }=userData;
   const [image, setImage] = useState(false);
   
+//   useEffect(()=>{
+//     onAuthStateChanged(auth, (user) => {
+//         if (user) {
+//           // User is signed in, see docs for a list of available properties
+//           const uid = user.uid;
+//           // ...
+//           console.log("uid", uid)
+//         } else {
+//           // User is signed out
+//           // ...
+//           console.log("user is logged out")
+//         }
+//       });
+     
+// }, [])
  
-
-
   const verifyToken = async () => {
     const data = await axios.post(
       `${url}/api/auth`,
@@ -44,11 +58,24 @@ const Dashboard = () => {
   //    }
   // }, []);
 
-  const Logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
-    navigate("/");
-  };
+
+  const handleLogout = async() => {               
+    await signOut(auth).then(() => {
+      localStorage.removeItem("token");
+       setToken("");
+        toast.success('Logged out successfully', {
+          position: "top-left",
+          theme: "colored"
+        });
+        navigate("/");
+    }).catch((error) => {
+      toast.error(`${error.message}`, {
+        position: "top-left",
+        autoClose: 5000,
+        theme: "dark",
+      });
+    });
+}
 
   return (
     <>
@@ -71,7 +98,7 @@ const Dashboard = () => {
                 </div>
           </div>
           <div className="col-6">
-          <button onClick={Logout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
           </div>
           
         </div>

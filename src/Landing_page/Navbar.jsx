@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { storeContext } from "../Context/ContextAPI.jsx";
+import {signOut} from 'firebase/auth'
+import { auth } from "../firebase.js";
 
 const Navbar = () => {
   
@@ -11,12 +13,30 @@ const Navbar = () => {
   const navigate=useNavigate();
   const{email, accessToken, providerId, photoURL, displayName, metadata}=userData;
 
-  const logout=async()=>{
-    localStorage.removeItem('token');
-    setToken(''); 
-    toast.success('Logged out successfully!');
-    navigate('/');
-  }
+  // const logout=async()=>{
+  //   localStorage.removeItem('token');
+  //   setToken(''); 
+  //   toast.success('Logged out successfully!');
+  //   navigate('/');
+  // }
+
+  const handleLogout = async() => {               
+    await signOut(auth).then(() => {
+      localStorage.removeItem("token");
+       setToken("");
+        toast.success('Logged out successfully', {
+          position: "top-left",
+          theme: "colored"
+        });
+        navigate("/");
+    }).catch((error) => {
+      toast.error(`${error.message}`, {
+        position: "top-left",
+        autoClose: 5000,
+        theme: "dark",
+      });
+    });
+}
 
  
   return (
@@ -43,10 +63,10 @@ const Navbar = () => {
               <li className="nav-item mx-4">
              
                 { token
-                ? <button className="nav-link" onClick={logout}>
+                ? <button className="nav-link" onClick={handleLogout}>
                 Logout
               </button>
-              :   <Link className="nav-link" to={"/signup"}>
+              :   <Link className="nav-link" to={"/firebasignup"}>
               Signup
             </Link>
             }

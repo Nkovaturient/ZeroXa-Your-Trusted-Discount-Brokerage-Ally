@@ -4,6 +4,9 @@ import { auth } from "../../firebase";
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { storeContext } from '../../Context/ContextAPI';
+import { GoogleAuthProvider, linkWithPopup , getAuth } from "firebase/auth";
+const provider = new GoogleAuthProvider();
+
 
 const FirebaseSignup = () => {
 
@@ -33,10 +36,9 @@ const FirebaseSignup = () => {
             const user = userCredential.user;
             // console.log(userCredential);
             setUserData(user);
-            const{email, accessToken, providerId, photoURL, displayName, metadata}=user;
+            const{accessToken, }=user;
           localStorage.setItem("token", accessToken)
            setToken(accessToken);
-          //  setUsername(email);
            
             toast.success('Registered Successfully!', {
                 position: "top-left",
@@ -46,10 +48,8 @@ const FirebaseSignup = () => {
             navigate("/");
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-            toast.error(errorMessage, {
+            
+            toast.error(`${error.message}`, {
                 position: "top-left",
                 autoClose: 5000,
                 theme: "dark",
@@ -57,7 +57,21 @@ const FirebaseSignup = () => {
         });
     }
 
-    console.log(inp);
+   const googleSignup=async()=>{
+    const gauth=auth;
+    await linkWithPopup(gauth.currentUser, provider).then((result) => {
+      // Accounts successfully linked.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const user = result.user;
+      console.log(user);
+    }).catch((error) => {
+      toast.error(`${error.message}`, {
+        position: "top-left",
+        autoClose: 5000,
+        theme: "dark",
+      });
+    });
+   }
 
   return (
     <div className="signup-page">
@@ -100,6 +114,10 @@ const FirebaseSignup = () => {
         <button type="submit" style={{fontWeight: 500, backgroundColor: '#DD2C00'}}>Submit</button>
         <span>
           Already have an account? <Link to={"/login"}>Login</Link>
+        </span>
+        <hr />
+        <span>
+         <button className='offset-2' onClick={googleSignup}>Sign up with Google</button>
         </span>
       </form>
     </div>

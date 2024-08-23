@@ -7,4 +7,6 @@ export const config={
     STORAGE_BUCKET: import.meta.env.VITE_STORAGE_BUCKET,
     SENDERID: import.meta.env.VITE_SENDERID,
     APPID: import.meta.env.VITE_APPID,
+    CLIENT_ID: import.meta.env.VITE_GOOGLE_CLIENTID,
+    CLIENT_SECRET: import.meta.env.VITE_GOOGLE_CLIENT_SECRET
 }

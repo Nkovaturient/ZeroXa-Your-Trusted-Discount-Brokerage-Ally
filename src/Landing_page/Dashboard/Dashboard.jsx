@@ -1,13 +1,12 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useContext } from "react";
 import { storeContext } from "../../Context/ContextAPI";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useState } from "react";
-import { useEffect } from "react";
-import {signOut, onAuthStateChanged} from 'firebase/auth'
 import { auth } from "../../firebase";
+import { GoogleAuthProvider, linkWithPopup, getAuth, getRedirectResult, signOut  } from "firebase/auth";
+const provider = new GoogleAuthProvider();
 
 const Dashboard = () => {
   const { url, token, setToken, userData } = useContext(storeContext);
@@ -48,15 +47,23 @@ const Dashboard = () => {
     });
   };
 
-  // useEffect(() => {
-  //     verifyToken();
-  // {
-  //     email: email,
-  //     accountHolder: displayName || providerId,
-  //     creationTime: metadata.creationTime.slice(0, 16),
-  //     photoUrl: photoURL,
-  //    }
-  // }, []);
+  useEffect(() => {
+     getRedirectResult(auth).then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      if (credential) {
+        // Accounts successfully linked.
+        const user = result.user;
+        console.log("dashboard user--")
+        console.log(user);
+      }
+    }).catch((error) => {
+      toast.error(`${error.message}`, {
+        position: "top-left",
+        autoClose: 5000,
+        theme: "dark",
+      });
+    });
+  }, []);
 
 
   const handleLogout = async() => {               

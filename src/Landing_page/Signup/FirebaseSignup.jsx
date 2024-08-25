@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { storeContext } from '../../Context/ContextAPI';
 import { GoogleAuthProvider, linkWithPopup , getAuth } from "firebase/auth";
 const provider = new GoogleAuthProvider();
+const gauth=getAuth();
 
 
 const FirebaseSignup = () => {
@@ -58,7 +59,7 @@ const FirebaseSignup = () => {
     }
 
    const googleSignup=async()=>{
-    const gauth=auth;
+    
     await linkWithPopup(gauth.currentUser, provider).then((result) => {
       // Accounts successfully linked.
       const credential = GoogleAuthProvider.credentialFromResult(result);

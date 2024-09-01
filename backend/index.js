@@ -15,7 +15,7 @@ const DB_URL=process.env.DB_URL;
 
 const app=express();
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174" ],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://zeroxa-your-trusted-discount-brokerage.onrender.com", "https://zeroxa.onrender.com" ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));

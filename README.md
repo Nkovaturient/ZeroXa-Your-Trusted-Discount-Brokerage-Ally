@@ -7,7 +7,6 @@ End-to-end MERN stack web app clone of Zerodha: India's leading and most trusted
 ### Dashboard 🎹📚
 -   [Dashboard](https://zeroxa-your-trusted-discount-brokerage.onrender.com)
 
-
 # Tech Stack & Tools
 
 - ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) 
